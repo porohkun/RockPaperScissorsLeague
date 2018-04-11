@@ -5,9 +5,9 @@ namespace Layers
 {
     public class MainMenuLayer : LayerBase
     {
-        public override HidingType Hiding { get { return HidingType.HideAll; } }
+        public override VisibilityType Visibility { get { return VisibilityType.OnlyOnTop; } }
 
-        public void OnPlay()
+        public void OnChampionship()
         {
             LayersManager.FadeOut(0.5f, () =>
             {
@@ -18,14 +18,14 @@ namespace Layers
             });
         }
 
-        public void OnTutorial()
+        public void OnDuel()
         {
             //LayersManager.Push<GameLayer>();
         }
-        
-        public void OnFeedback()
+
+        public override void OnQuit()
         {
-            //LayersManager.Push<FeedbackLayer>();
+            LayersManager.FadeOut(0.5f, () => Application.Quit());
         }
     }
 }

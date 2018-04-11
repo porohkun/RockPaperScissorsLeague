@@ -38,7 +38,7 @@ public class LayerBase : MonoBehaviour
 
     public virtual void OnQuit()
     {
-        LayersManager.Pop();
+        LayersManager.Pop(this);
     }
 
     internal virtual void OnFloatUp()

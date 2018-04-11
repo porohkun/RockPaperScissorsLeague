@@ -8,8 +8,8 @@ namespace Layers
     {
         void Start()
         {
-            LayersManager.Push<MainMenuLayer>();
-            LayersManager.FadeIn(0f, null);
+            LayersManager.Push<BackgroundLayer>();
+            LayersManager.FadeIn(1f, () => LayersManager.Push<MainMenuLayer>());
         }
 
     }
