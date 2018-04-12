@@ -8,8 +8,7 @@ namespace Layers
     public class DuelStartLayer : LayerBase
     {
         public override VisibilityType Visibility { get { return VisibilityType.OnlyOnTop; } }
-
-        [SerializeField]
+        
         private AIPlayerModel[] _aiPlayers;
 
         [SerializeField]
@@ -20,6 +19,7 @@ namespace Layers
 
         private void Start()
         {
+            _aiPlayers = Resources.FindObjectsOfTypeAll<AIPlayerModel>();
             foreach (var player in _aiPlayers)
                 if (player != null)
                 {
