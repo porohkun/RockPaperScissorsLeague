@@ -13,6 +13,7 @@ public class AIPlayerModel : ScriptableObject
     public string Name { get { return _name; } }
 
     [SerializeField]
+    [Multiline]
     private string _description;
     public string Description { get { return _description; } }
 

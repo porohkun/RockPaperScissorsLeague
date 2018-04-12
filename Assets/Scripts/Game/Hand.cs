@@ -102,6 +102,16 @@ public class Hand : IComparable<HandType>, IComparable<Hand>, IEquatable<HandTyp
         return !a1.Equals(a2);
     }
 
+    public static Hand operator ++(Hand a1)
+    {
+        return new Hand((HandType)(((int)a1.Type + 1) % 3));
+    }
+
+    public static Hand operator --(Hand a1)
+    {
+        return new Hand((HandType)(((int)a1.Type + 2) % 3));
+    }
+
     public int CompareTo(HandType other)
     {
         return _results[Offset(Type, other)];

@@ -5,6 +5,8 @@ using System.Text;
 
 public class Battle
 {
+    const int _summaryScore = 5;
+
     public IPlayer Player1 { get; private set; }
     public IPlayer Player2 { get; private set; }
     public Hand Player1Shape { get; private set; }
@@ -55,7 +57,7 @@ public class Battle
             Player2Score++;
         }
 
-        if (Player1Score + Player2Score == 5 || Math.Abs(Player1Score - Player2Score) >= 3 || Round > 30)
+        if (Player1Score * 2 > _summaryScore || Player2Score * 2 > _summaryScore || Round > 30)
             WinnerIsDeterminated = true;
     }
 }

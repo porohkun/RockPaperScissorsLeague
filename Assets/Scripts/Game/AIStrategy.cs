@@ -7,9 +7,7 @@ using UnityEngine;
 public class AIStrategy : ScriptableObject
 {
     public const string AssetsFolder = "Assets/Resources/AIStrategies";
-
-    protected System.Random _rnd = new System.Random();
-
+    
     public virtual void Initialize()
     {
 

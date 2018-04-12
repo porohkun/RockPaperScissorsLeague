@@ -102,6 +102,7 @@ namespace Layers
                 _countdown.text = _battle.Winner == 1 ? "YOU WIN!" : (_battle.Winner == 2 ? "YOU LOSE!" : "DEAD HEAT! O_O");
                 TweenFactory.Tween(_countdown, Vector3.one * 0.3f, Vector3.one * 0.6f, 1.2f, TweenScaleFunctions.CubicEaseOut, (p) => rt.localScale = p.CurrentValue, (c) =>
                     {
+                        Unlock();
                         _exitButton.SetActive(true);
                     });
             }
@@ -169,6 +170,7 @@ namespace Layers
         {
             LayersManager.FadeOut(0.25f, () =>
             {
+                Lock();
                 _exitButton.SetActive(false);
                 ((RectTransform)_countdown.transform).localScale = Vector2.one;
                 _countdown.gameObject.SetActive(false);
