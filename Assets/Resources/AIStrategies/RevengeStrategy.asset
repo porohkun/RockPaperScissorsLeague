@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1d2858196cb9a4085ad1d21b74484f, type: 3}
-  m_Name: Wins80
+  m_Script: {fileID: 11500000, guid: 2699fab35ef44ff4c9e8e7320f834831, type: 3}
+  m_Name: RevengeStrategy
   m_EditorClassIdentifier: 
-  _victoryChance: 0.8

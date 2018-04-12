@@ -246,15 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714330cedd10c274ab083f898be47850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aiPlayers:
-  - {fileID: 11400000, guid: 42830e90f0adfcd43950f5d100e91cf1, type: 2}
-  - {fileID: 11400000, guid: 820c57d24b8e9c0409d3716fe3a089b0, type: 2}
-  - {fileID: 11400000, guid: aa523b91a776bab4a8c5108407e81fad, type: 2}
-  - {fileID: 11400000, guid: 22ece68d76e07f740be43dced25c26e3, type: 2}
-  - {fileID: 11400000, guid: 4f4b1fef569896d4da52fa660f4df73a, type: 2}
-  - {fileID: 11400000, guid: 0b618ae3e046cc84686f38ed6f82a6fb, type: 2}
-  - {fileID: 11400000, guid: 36f5b07adb17c0144a7e3c7b0449aa0b, type: 2}
-  - {fileID: 11400000, guid: f1140be2a08bcc74f8427b37d6cf1c1b, type: 2}
   _opponentsList: {fileID: 224464292565853560}
   _buttonPrefab: {fileID: 114495015659715386, guid: 7d137ff626ca6fa499dfffa12d44085f,
     type: 2}
@@ -338,7 +329,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0.000030517578}
   m_SizeDelta: {x: 630, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224512365310181796

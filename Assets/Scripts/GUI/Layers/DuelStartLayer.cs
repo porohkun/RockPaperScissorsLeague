@@ -39,5 +39,22 @@ namespace Layers
                 LayersManager.FadeIn(0.25f, null);
             });
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OnQuit();
+            }
+        }
+
+        public override void OnQuit()
+        {
+            LayersManager.FadeOut(0.25f, () =>
+            {
+                LayersManager.PopTill<MainMenuLayer>();
+                LayersManager.FadeIn(0.25f, null);
+            });
+        }
     }
 }

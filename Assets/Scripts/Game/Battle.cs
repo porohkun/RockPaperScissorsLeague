@@ -44,6 +44,9 @@ public class Battle
         Player1Shape = Player1.MakeMoveAsFirst();
         Player2Shape = Player2.MakeMoveAsSecond(Player1Shape);
 
+        Player1.LastRoundResult(Player2Shape);
+        Player2.LastRoundResult(Player1Shape);
+
         if (Player1Shape == Player2Shape)
             RoundWinner = 0;
         else if (Player1Shape > Player2Shape)

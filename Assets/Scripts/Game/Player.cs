@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class Player : IPlayer
 {
     public string Name { get; private set; }
+    public string Description { get; private set; }
+    public Sprite Icon { get; private set; }
     public Hand SelectedShape { get; set; }
+    public event Action<string> CustomMessage;
 
-    public Player (string name)
+    public Player(string name)
     {
-        Name = name;
+        Name = string.IsNullOrEmpty(name) ? "Player" : name;
+        Description = "";
         SelectedShape = Hand.Rock;
     }
 
@@ -27,6 +32,11 @@ public class Player : IPlayer
     }
 
     public void StartNewBattle()
+    {
+
+    }
+
+    public void LastRoundResult(Hand oppHand)
     {
         
     }

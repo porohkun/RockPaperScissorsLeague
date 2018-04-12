@@ -72,15 +72,15 @@ public class Hand : IComparable<HandType>, IComparable<Hand>, IEquatable<HandTyp
         return a1.CompareTo(a2) < 0;
     }
 
-    public static bool operator ==(Hand a1, Hand a2)
-    {
-        return a1.Equals(a2);
-    }
+    //public static bool operator ==(Hand a1, Hand a2)
+    //{
+    //    return a1.Equals(a2);
+    //}
 
-    public static bool operator !=(Hand a1, Hand a2)
-    {
-        return !a1.Equals(a2);
-    }
+    //public static bool operator !=(Hand a1, Hand a2)
+    //{
+    //    return !a1.Equals(a2);
+    //}
 
     public static bool operator ==(Hand a1, HandType a2)
     {

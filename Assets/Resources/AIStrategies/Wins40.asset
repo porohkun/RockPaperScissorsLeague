@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1d2858196cb9a4085ad1d21b74484f, type: 3}
   m_Name: Wins40
   m_EditorClassIdentifier: 
+  _victoryChance: 0.4

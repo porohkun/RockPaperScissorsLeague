@@ -18,10 +18,8 @@ public class CheaterStrategy : AIStrategy
         _win = Random.Range(0f, 1f) < _victoryChance;
     }
 
-    public override Hand MakeMove(Hand opponentMove)
+    protected override Hand MakeMoveInternal(Hand opponentMove)
     {
-        for (int i = 0; i < 100;i++) 
-        Debug.Log(Random.Range(0, 2));
         Hand ownMove;
         if ((_ownScore == 0 && _oppScore == 0) ||
             (_win && _ownScore > _oppScore) ||
@@ -42,7 +40,7 @@ public class CheaterStrategy : AIStrategy
         return ownMove;
     }
 
-    public override Hand MakeMove()
+    protected override Hand MakeMoveInternal()
     {
         return new Hand((HandType)Random.Range(0, 3));
     }

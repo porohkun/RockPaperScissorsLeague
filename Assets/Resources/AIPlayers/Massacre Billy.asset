@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Name: Massacre Billy
   m_EditorClassIdentifier: 
   _name: Massacre Billy
-  _description: Lorem ipsit sit dolores amen di situs loripsa de va lintana
+  _description: "\u0422\u044B \u0443\u0432\u0438\u0434\u0438\u0448\u044C, \u043A\u0430\u043A
+    \u043E\u043D \u0436\u0435\u0441\u0442\u043E\u043A \u0441\u043E \u0441\u0432\u043E\u0438\u043C\u0438
+    40 \u0448\u0430\u043D\u0441\u0430\u043C\u0438 \u0438\u0437 100."
   _icon: {fileID: 21300014, guid: 2a78d0c9544d52f45a6664f44f02931d, type: 3}
   _strategy: {fileID: 11400000, guid: c4b1c4ded1a1c8e479da7f03a92287ee, type: 2}

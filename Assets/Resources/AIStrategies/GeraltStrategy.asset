@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1d2858196cb9a4085ad1d21b74484f, type: 3}
-  m_Name: Wins80
+  m_Script: {fileID: 11500000, guid: 380976add153eba4c803d6df02708c4b, type: 3}
+  m_Name: GeraltStrategy
   m_EditorClassIdentifier: 
-  _victoryChance: 0.8

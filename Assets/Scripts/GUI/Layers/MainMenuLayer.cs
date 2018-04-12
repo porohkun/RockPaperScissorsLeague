@@ -11,7 +11,7 @@ namespace Layers
         {
             LayersManager.FadeOut(0.5f, () =>
             {
-                //LayersManager.Push<GameLayer>().Initialize();
+                LayersManager.Push<ChampStartLayer>();
                 LayersManager.FadeIn(0.5f, () =>
                 {
                 });

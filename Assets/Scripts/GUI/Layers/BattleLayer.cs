@@ -30,8 +30,11 @@ namespace Layers
         private Text _countdown;
         [SerializeField]
         private GameObject _exitButton;
+        [SerializeField]
+        private Image _axii;
 
-        private AIPlayerModel _aiPlayer;
+        private AIPlayer _aiPlayer;
+
         private Battle _battle;
         private Player _player;
 
@@ -42,15 +45,51 @@ namespace Layers
             _aiPlayerHand.WinEnded += _playerHand_WinEnded;
         }
 
+        public void Begin(Battle currentPlayerBattle)
+        {
+            _player = currentPlayerBattle.Player1 as Player;
+            _aiPlayer = currentPlayerBattle.Player2 as AIPlayer;
+            _aiPlayer.CustomMessage += _aiPlayer_CustomMessage;
+            _battle = currentPlayerBattle;
+            BeginInternal();
+        }
+
+        private void _aiPlayer_CustomMessage(string message)
+        {
+            switch(message)
+            {
+                case "axii":
+                    TweenFactory.Tween(_axii, Vector3.one*0.7f, Vector3.one * 3f, 1.2f, TweenScaleFunctions.CubicEaseOut, (p) =>
+                    {
+                        _axii.gameObject.SetActive(true);
+                        _axii.transform.localScale = p.CurrentValue;
+                        _axii.color = new Color(1f, 1f, 1f, p.CurrentProgress);
+                        Lock();
+                    }, (c) =>
+                    {
+                        _axii.gameObject.SetActive(false);
+                    });
+                    break;
+            }
+        }
+
         public void Begin(AIPlayerModel aiplayer)
         {
             _player = new Player("Player");
-            _battle = new Battle(_player, new AIPlayer(aiplayer.Strategy));
-            _aiPlayer = aiplayer;
-            _aiPlayerIcon.sprite = aiplayer.Icon;
-            _aiPlayerName.text = aiplayer.Name;
-            _playerName.text = "Player";
-            _roundText.text = "1/5";
+            _aiPlayer = new AIPlayer(aiplayer);
+            _aiPlayer.CustomMessage += _aiPlayer_CustomMessage;
+            _battle = new Battle(_player, _aiPlayer);
+            BeginInternal();
+        }
+
+        private void BeginInternal()
+        {
+            _aiPlayerIcon.sprite = _aiPlayer.Icon;
+            _aiPlayerName.text = _aiPlayer.Name;
+            _playerName.text = _player.Name;
+            _roundText.text = "1";
+            _playerScores.text = "0";
+            _aiPlayerScores.text = "0";
             _playerHand.SetHandShape(Hand.Rock);
             _aiPlayerHand.SetHandShape(Hand.Rock);
 
@@ -60,26 +99,26 @@ namespace Layers
             _countdown.gameObject.SetActive(true);
             _countdown.text = "3";
             TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c1) =>
-             {
-                 rt.anchoredPosition = Vector2.zero;
-                 _countdown.text = "2";
-                 TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c2) =>
-                 {
-                     rt.anchoredPosition = Vector2.zero;
-                     _countdown.text = "1";
-                     TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c3) =>
-                     {
-                         rt.anchoredPosition = Vector2.zero;
-                         _countdown.text = "FIGHT!";
-                         TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c4) =>
-                         {
-                             rt.anchoredPosition = Vector2.zero;
-                             _countdown.gameObject.SetActive(false);
-                             NextRound();
-                         });
-                     });
-                 });
-             });
+            {
+                rt.anchoredPosition = Vector2.zero;
+                _countdown.text = "2";
+                TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c2) =>
+                {
+                    rt.anchoredPosition = Vector2.zero;
+                    _countdown.text = "1";
+                    TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c3) =>
+                    {
+                        rt.anchoredPosition = Vector2.zero;
+                        _countdown.text = "FIGHT!";
+                        TweenFactory.Tween(_countdown, Vector2.zero, Vector2.up * 100f, 0.7f, TweenScaleFunctions.CubicEaseOut, (p) => rt.anchoredPosition = p.CurrentValue, (c4) =>
+                        {
+                            rt.anchoredPosition = Vector2.zero;
+                            _countdown.gameObject.SetActive(false);
+                            NextRound();
+                        });
+                    });
+                });
+            });
         }
 
         private void NextRound()
@@ -88,7 +127,7 @@ namespace Layers
             {
                 Unlock();
 
-                _roundText.text = _battle.Round + "/5";
+                _roundText.text = _battle.Round.ToString();
 
                 _playerHand.SetHandShape(Hand.Rock);
                 _aiPlayerHand.SetHandShape(Hand.Rock);
@@ -127,7 +166,7 @@ namespace Layers
                 case 2: _aiPlayerHand.StartWin(); break;
             }
         }
-        
+
         private void _playerHand_WinEnded()
         {
             NextRound();
@@ -162,6 +201,7 @@ namespace Layers
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                LayersManager.Pop();
                 OnQuit();
             }
         }
@@ -170,11 +210,12 @@ namespace Layers
         {
             LayersManager.FadeOut(0.25f, () =>
             {
+                _aiPlayer.CustomMessage -= _aiPlayer_CustomMessage;
                 Lock();
                 _exitButton.SetActive(false);
                 ((RectTransform)_countdown.transform).localScale = Vector2.one;
                 _countdown.gameObject.SetActive(false);
-                LayersManager.PopTill<MainMenuLayer>();
+                LayersManager.Pop();
                 LayersManager.FadeIn(0.25f, null);
             });
         }

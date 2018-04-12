@@ -57,6 +57,25 @@ public class CreateAIPlayerWindow : EditorWindow
                 Selection.activeObject = result;
             }
         }
+
+        GUILayout.Space(20);
+        if (GUILayout.Button("Create Revenge AI Strategy"))
+        {
+            var result = CreateScriptableObject<RevengeStrategy>(AIStrategy.AssetsFolder, _assetName);
+            if (result)
+            {
+                Selection.activeObject = result;
+            }
+        }
+        GUILayout.Space(20);
+        if (GUILayout.Button("Create Geralt AI Strategy"))
+        {
+            var result = CreateScriptableObject<GeraltStrategy>(AIStrategy.AssetsFolder, _assetName);
+            if (result)
+            {
+                Selection.activeObject = result;
+            }
+        }
     }
 
     T CreateScriptableObject<T>(string path, string name) where T : ScriptableObject

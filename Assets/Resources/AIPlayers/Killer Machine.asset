@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Killer Machine
   m_EditorClassIdentifier: 
   _name: Killer Machine
-  _description: Kill you! I'll kill you!
+  _description: "\u0423\u0431\u0438\u0432\u0430\u0435\u0442 \u0442\u0435\u0431\u044F
+    6 \u0440\u0430\u0437 \u0438\u0437 10."
   _icon: {fileID: 21300008, guid: 2a78d0c9544d52f45a6664f44f02931d, type: 3}
   _strategy: {fileID: 11400000, guid: 0284e3f900737224eb0eaaa76bc9d6bd, type: 2}

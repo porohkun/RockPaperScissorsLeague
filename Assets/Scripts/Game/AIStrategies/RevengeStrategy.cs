@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class FairPlayStrategy : AIStrategy
+public class RevengeStrategy : AIStrategy
 {
     protected override Hand MakeMoveInternal(Hand opponentMove)
     {
@@ -12,7 +12,12 @@ public class FairPlayStrategy : AIStrategy
 
     protected override Hand MakeMoveInternal()
     {
-        return new Hand((HandType)Random.Range(0, 3));
+        if (_lastOppHand == null)
+            return new Hand((HandType)Random.Range(0, 3));
+        else if (_lastRoundResult < 0)
+            return _lastOwnHand;
+        else
+            return _lastOppHand;
     }
 }
 
