@@ -20,7 +20,11 @@ namespace Layers
 
         public void OnDuel()
         {
-            //LayersManager.Push<GameLayer>();
+            LayersManager.FadeOut(0.5f, () =>
+            {
+                LayersManager.Push<DuelStartLayer>();
+                LayersManager.FadeIn(0.5f, null);
+            });
         }
 
         public override void OnQuit()

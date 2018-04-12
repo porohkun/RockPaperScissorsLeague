@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6352a0268ae5340b6019d46047413e, type: 3}
+  m_Name: Randy Random
+  m_EditorClassIdentifier: 
+  _name: Randy Random
+  _description: Lorem ipsit sit dolores amen di situs loripsa de va lintana
+  _icon: {fileID: 21300012, guid: 2a78d0c9544d52f45a6664f44f02931d, type: 3}
+  _strategy: {fileID: 11400000, guid: bd9b12791bfb4294297df4506777acc1, type: 2}
