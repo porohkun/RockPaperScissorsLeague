@@ -26,7 +26,7 @@ namespace Layers
         public void NewPlayer(string name)
         {
             _tour = new Tournament();
-            foreach (var model in Resources.FindObjectsOfTypeAll<AIPlayerModel>())
+            foreach (var model in Resources.LoadAll<AIPlayerModel>(""))
                 _tour.AddPlayer(new AIPlayer(model));
             _tour.RunLaps(100);
             _tour.AddPlayer(new Player(name));

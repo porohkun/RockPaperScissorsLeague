@@ -19,7 +19,7 @@ namespace Layers
 
         private void Start()
         {
-            _aiPlayers = Resources.FindObjectsOfTypeAll<AIPlayerModel>();
+            _aiPlayers = Resources.LoadAll<AIPlayerModel>("");
             foreach (var player in _aiPlayers)
                 if (player != null)
                 {
